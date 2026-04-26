@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Source Map Detective</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="header-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+        <path d="M11 8v6M8 11h6" stroke-width="2.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="header-title">Source Map Detective</div>
+      <div class="header-sub" id="page-host">Scanning…</div>
+    </div>
+  </div>
+
+  <div id="scanning" class="state-view">
+    <div class="spinner"></div>
+    <div class="state-text">Scanning page scripts…</div>
+  </div>
+
+  <div id="none-found" class="state-view hidden">
+    <div class="state-icon clean">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M9 12l2 2 4-4"/>
+        <circle cx="12" cy="12" r="9"/>
+      </svg>
+    </div>
+    <div class="state-text">No source maps detected</div>
+    <div class="state-sub">This page's JavaScript files don't expose source maps.</div>
+  </div>
+
+  <div id="found-view" class="hidden">
+    <div class="found-header">
+      <span id="found-count" class="badge"></span>
+      <span class="found-label">source map(s) found</span>
+      <button id="btn-download-all" class="btn-all" title="Download all as ZIP">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download all
+      </button>
+    </div>
+
+    <div id="maps-list" class="maps-list"></div>
+
+    <div class="info-bar">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      Downloads are saved to your default downloads folder.
+    </div>
+  </div>
+
+  <div id="error-bar" class="error-bar hidden"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
